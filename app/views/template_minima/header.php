@@ -35,14 +35,23 @@
           </div>
           <div class="s-12 l-10">
             <div class="top-nav right">
+              <?php if(isset($_SESSION['username'])) : ?>
+                <p>Welcome <?=$_SESSION['username']?></p>
+              <?php endif;?>
               <p class="nav-text"></p>
               <ul class="right chevron">
                 <li><a href="<?=ROOT?>index">Home</a></li>
                 <li><a href="<?=ROOT?>about">About Us</a></li>             
                 <li><a href="<?=ROOT?>contact">Contact</a></li>
-                <li><a href="<?=ROOT?>login">Login</a></li>
-                <li><a href="<?=ROOT?>register">Register</a></li>
-                <li><a href="<?=ROOT?>upload">Upload</a></li>
+                
+                <?php if(!isset($_SESSION['username'])) : ?>
+                  <li><a href="<?=ROOT?>login">Login</a></li>
+                  <li><a href="<?=ROOT?>register">Register</a></li>  
+                <?php else: ?>
+                  <li><a href="<?=ROOT?>logout">Logout</a></li>
+                  <li><a href="<?=ROOT?>upload">Upload</a></li>
+                <?php endif; ?>
+                  
               </ul>
             </div>
           </div>  
