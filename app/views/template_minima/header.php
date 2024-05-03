@@ -40,7 +40,7 @@
               <?php endif;?>
               <p class="nav-text"></p>
               <ul class="right chevron">
-                <li><a href="<?=ROOT?>index">Home</a></li>
+                <li><a href="<?=ROOT?>home">Home</a></li>
                 <li><a href="<?=ROOT?>about">About Us</a></li>             
                 <li><a href="<?=ROOT?>contact">Contact</a></li>
                 

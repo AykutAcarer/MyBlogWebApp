@@ -2,7 +2,7 @@
 
 /*set your website title*/
 
-define('WEBSITE_TITLE', "My Blog");
+define('WEBSITE_TITLE', "Frame Mingle Studio");
 
 /*set database variables*/
 
