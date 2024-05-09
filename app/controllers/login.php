@@ -7,13 +7,13 @@ Class Login extends Controller
     {
         $data['page_title'] = "Login";
 
-        if(isset($_POST['username']) && isset($_POST['password']))
+        if(isset($_POST['email']) && isset($_POST['password']))
         {
             $user = $this->loadModel("user");
             $user->login($_POST);
         }
-        $this->view("template_minima/login",$data);
+        $this->view("template_freshshop/login",$data);
     }
 }
 
-?>
+?> 

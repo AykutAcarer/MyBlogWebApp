@@ -6,12 +6,12 @@ Class Register extends Controller
     function index()
     {
         $data['page_title'] = "Registeration";
-        if(isset($_POST['username']) && isset($_POST['password']) && isset($_POST['email']))
+        if(isset($_POST['email']) && isset($_POST['password']))
         {
             $user = $this->loadModel("user");
             $user->register($_POST);
         }
-        $this->view("template_minima/register",$data);
+        $this->view("template_freshshop/register",$data);
     }
 }
 

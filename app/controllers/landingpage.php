@@ -6,7 +6,7 @@ Class Landingpage extends Controller
     function index()
     { 
         $data['page_title'] = "Landing Page";
-        $this->view("template_minima/landingpage",$data);
+        $this->view("template_freshshop/index",$data);
     }
 
     

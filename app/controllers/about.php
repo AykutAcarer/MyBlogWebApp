@@ -6,7 +6,7 @@ Class About extends Controller
     function index()
     {
         $data['page_title'] = "About";
-        $this->view("template_minima/about",$data);
+        $this->view("template_freshshop/about",$data);
     }
 
     

@@ -2,7 +2,7 @@
 
 Class Controller
 {
-    protected function view($view, $data = [])
+    protected function view($view, $data = [], $products=[])
     {
         if (file_exists("../app/views/". $view .".php"))
         {
@@ -22,5 +22,6 @@ Class Controller
 
         return false;
     }
+
 }
 ?>
