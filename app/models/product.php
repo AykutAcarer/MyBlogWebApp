@@ -39,6 +39,7 @@ Class Product
             $product_items[$product->product_id]['images'][] = array(
                 'images_id' => $product->images_id,
                 'images_url' => $product->images_url,
+                'product_id_fk' =>$product->product_id_fk,
                 'images_created_at' => $product->images_created_at,
                 'images_updated_at' => $product->images_updated_at
             );

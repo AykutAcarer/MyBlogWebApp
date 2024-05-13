@@ -1,5 +1,5 @@
 <?= $this->view("template_freshshop/header", $data, $products); ?>
-<?php show($products); ?>
+<!-- <?php show($products);?> -->
     <!-- Start All Title Box -->
     <div class="all-title-box">
         <div class="container">
@@ -55,21 +55,27 @@
 
                                         <!-- For Each Start -->
                                         <?php foreach($products as $item){
-                                        echo'
-                                        
+                                            //get just first image each products in order to show product list
+                                            $firstImageUrl = isset($item['images'][0]['images_url']) ? $item['images'][0]['images_url'] : null;
+                                
+                                            echo'
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                 <div class="products-single fix">
                                                     <div class="box-img-hover">
                                                         <div class="type-lb">
                                                             <p class="sale">Sale</p>
                                                         </div>
-                                                        <img src="'.ASSETS.'/' .$item['product_images'].'" class="img-fluid" alt="Image">
+                                                        
+                                                            
+                                                                <img src="'.ASSETS.'/' .$firstImageUrl.'" class="img-fluid" alt="Image">
+                                                            
+                                                        
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="'.ROOT.'productdetail/?product_id='.$item['product_id'].'" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                             </ul>
-                                                            <a class="cart" href="'.ROOT.'cart/?product_id='.$item['product_id'].'&product_name='.$item['product_name'].'&product_preis='.$item['product_preis_now'].'&product_images='.$item['product_images'].'">Add to Cart</a>
+                                                            <a class="cart" href="'.ROOT.'cart/?product_id='.$item['product_id'].'&product_name='.$item['product_name'].'&product_preis='.$item['product_preis_now'].'&product_images='.$firstImageUrl.'">Add to Cart</a>
                                                         </div>
                                                     </div>
                                                     <div class="why-text">
@@ -78,7 +84,6 @@
                                                     </div>
                                                 </div>
                                             </div>';
-
                                         }?>
                                         <!-- For Each Ende -->
 
@@ -88,37 +93,39 @@
                                     <!-- For Each Start -->
                                     <?php foreach($products as $item)
                                     {
-                                    echo'
-                                        <div class="list-view-box">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                    <div class="products-single fix">
-                                                        <div class="box-img-hover">
-                                                            <div class="type-lb">
-                                                                <p class="new">New</p>
-                                                            </div>
-                                                            <img src="'.ASSETS.'/'.$item['product_images'].'" class="img-fluid" alt="Image">
-                                                            <div class="mask-icon">
-                                                                <ul>
-                                                                    <li><a href="'.ROOT.'productdetail/?product_id='.$item['product_id'].'" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                                                </ul>
+                                        //get just first image each products in order to show product list
+                                        $firstImageUrl = isset($item['images'][0]['images_url']) ? $item['images'][0]['images_url'] : null;
+                                        echo'
+                                            <div class="list-view-box">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="products-single fix">
+                                                            <div class="box-img-hover">
+                                                                <div class="type-lb">
+                                                                    <p class="new">New</p>
+                                                                </div>
+                                                                <img src="'.ASSETS.'/'.$firstImageUrl.'" class="img-fluid" alt="Image">
+                                                                <div class="mask-icon">
+                                                                    <ul>
+                                                                        <li><a href="'.ROOT.'productdetail/?product_id='.$item['product_id'].'" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                                    </ul>
 
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                    <div class="why-text full-width">
-                                                        <h4>'.$item['product_name'].'</h4>
-                                                        <h5> <del>$'.$item['product_preis_from'].'</del> $'.$item['product_preis_now'].'</h5>
-                                                        <p>$'.$item['product_description'].'</p>
-                                                        <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                    <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                        <div class="why-text full-width">
+                                                            <h4>'.$item['product_name'].'</h4>
+                                                            <h5> <del>$'.$item['product_preis_from'].'</del> $'.$item['product_preis_now'].'</h5>
+                                                            <p>$'.$item['product_description'].'</p>
+                                                            <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    ';
+                                        ';                                        
                                     }
                                     ?>
                                 </div>

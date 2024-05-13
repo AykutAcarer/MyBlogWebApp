@@ -1,4 +1,5 @@
 <?= $this->view("template_freshshop/header",$data,$products); ?>
+<?=show($products)?>
     <!-- Start All Title Box -->
     <div class="all-title-box">
         <div class="container">
@@ -22,9 +23,26 @@
                 <div class="col-xl-5 col-lg-5 col-md-6">
                     <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
-                            <div class="carousel-item active"> <img class="d-block w-100" src="<?=ASSETS?>/template_freshshop/images/big-img-01.jpg" alt="First slide"> </div>
-                            <div class="carousel-item"> <img class="d-block w-100" src="<?=ASSETS?>/template_freshshop/images/big-img-02.jpg" alt="Second slide"> </div>
-                            <div class="carousel-item"> <img class="d-block w-100" src="<?=ASSETS?>/template_freshshop/images/big-img-03.jpg" alt="Third slide"> </div>
+                            <?php
+                                foreach($products as $item)
+                                {
+                                    if($_GET['product_id'] == $item['product_id'])
+                                    {
+                                        //get just first image of each products in order to show product list
+                                        $firstImageUrl = isset($item['images'][0]['images_url']) ? $item['images'][0]['images_url'] : null;   
+                                        echo '
+                                        <div class="carousel-item active"> <img class="d-block w-100" src="'.ASSETS.'/'. $firstImageUrl.'" alt="First slide"> </div>';
+                                      
+                                        for($i=1; $i< count($item['images']); $i++)
+                                        {
+                                            echo '
+                                            <div class="carousel-item"> <img class="d-block w-100" src="'.ASSETS.'/'.$item['images'][$i]['images_url'].'" alt="Second slide"> </div>';
+                                        
+                                        }
+                                    }
+
+                                }
+                            ?>
                         </div>
                         <a class="carousel-control-prev" href="#carousel-example-1" role="button" data-slide="prev"> 
 						<i class="fa fa-angle-left" aria-hidden="true"></i>
@@ -35,15 +53,22 @@
 						<span class="sr-only">Next</span> 
 					</a>
                         <ol class="carousel-indicators">
-                            <li data-target="#carousel-example-1" data-slide-to="0" class="active">
-                                <img class="d-block w-100 img-fluid" src="<?=ASSETS?>/template_freshshop/images/smp-img-01.jpg" alt="" />
-                            </li>
-                            <li data-target="#carousel-example-1" data-slide-to="1">
-                                <img class="d-block w-100 img-fluid" src="<?=ASSETS?>/template_freshshop/images/smp-img-02.jpg" alt="" />
-                            </li>
-                            <li data-target="#carousel-example-1" data-slide-to="2">
-                                <img class="d-block w-100 img-fluid" src="<?=ASSETS?>/template_freshshop/images/smp-img-03.jpg" alt="" />
-                            </li>
+                        <?php
+                            foreach($products as $item)
+                            {
+                                if($_GET['product_id'] == $item['product_id'])
+                                {
+                                    for($i=0; $i< count($item['images']); $i++)
+                                    {
+                                        echo'
+                                        <li data-target="#carousel-example-1" data-slide-to="0" class="active">
+                                            <img class="d-block w-100 img-fluid" src="'.ASSETS.'/'.$item['images'][$i]['images_url'].'" alt="" />
+                                        </li>
+                                        ';
+                                    }
+                                }
+                            }
+                        ?>
                         </ol>
                     </div>
                 </div>
@@ -107,8 +132,10 @@
                                 { 
                                     if($item['product_id'] == $_GET['product_id'])
                                     {
-                                        foreach($item['reviews'] as $reviews){
-                                        echo 
+                                        foreach($item['reviews'] as $reviews)
+                                        {
+
+                                            echo 
                                             '<div class="media mb-3">
                                                 <div class="mr-2"> 
                                                     <img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
@@ -138,26 +165,31 @@
                     <div class="featured-products-box owl-carousel owl-theme">
                         <?php foreach ($products as $item)
                         {
-                            echo
-                            '<div class="item">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <img src="'.ASSETS.'/'.$item['product_images'].'" class="img-fluid" alt="Image">
-                                        <div class="mask-icon">
-                                            <ul>
-                                                <li><a href="'.ROOT.'productdetail/?product_id='.$item['product_id'].'" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
-                                                <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
-                                            </ul>
-                                            <a class="cart" href="#">Add to Cart</a>
+                            
+                         
+                                //get just first image of each products in order to show product list
+                                $firstImageUrl = isset($item['images'][0]['images_url']) ? $item['images'][0]['images_url'] : null; 
+                                echo
+                                '<div class="item">
+                                    <div class="products-single fix">
+                                        <div class="box-img-hover">
+                                            <img src="'.ASSETS.'/'.$firstImageUrl.'" class="img-fluid" alt="Image">
+                                            <div class="mask-icon">
+                                                <ul>
+                                                    <li><a href="'.ROOT.'productdetail/?product_id='.$item['product_id'].'" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
+                                                    <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
+                                                </ul>
+                                                <a class="cart" href="#">Add to Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="why-text">
+                                            <h4>'.$item['product_name'].'</h4>
+                                            <h5>$'.$item['product_preis_now'].'</h5>
                                         </div>
                                     </div>
-                                    <div class="why-text">
-                                        <h4>'.$item['product_name'].'</h4>
-                                        <h5>$'.$item['product_preis_now'].'</h5>
-                                    </div>
                                 </div>
-                            </div>
-                            ';
+                                ';
+                            
                         }
                         ?>
                     </div>
