@@ -1,5 +1,5 @@
 <?= $this->view("template_freshshop/header",$data); ?>
-<?=show($_SESSION['cart']);?>
+
 
     <!-- Start All Title Box -->
     <div class="all-title-box">

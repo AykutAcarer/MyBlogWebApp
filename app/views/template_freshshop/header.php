@@ -36,6 +36,11 @@
 </head>
 
 <body>
+    <div id="under-construction" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 d-flex justify-content-center bg-warning fs-1 fw-bold">
+        <div class="p-2">
+            <p class=""> >>>>>> This Website is under construction <<<<<< </p>
+        </div>
+    </div>
     <!-- Start Main Top -->
     <div class="main-top">
         <div class="container-fluid">
@@ -183,7 +188,7 @@
                             <p>1x - <span class="price">$40.00</span></p>
                         </li>
                         <li class="total">
-                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                            <a href="<?=ROOT?>cart/?product_id=newCart" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
                             <span class="float-right"><strong>Total</strong>: $180.00</span>
                         </li>
                     </ul>

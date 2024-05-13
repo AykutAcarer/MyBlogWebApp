@@ -1,4 +1,5 @@
 <?= $this->view("template_freshshop/header", $data, $products); ?>
+<?php show($products); ?>
     <!-- Start All Title Box -->
     <div class="all-title-box">
         <div class="container">
@@ -55,13 +56,14 @@
                                         <!-- For Each Start -->
                                         <?php foreach($products as $item){
                                         echo'
+                                        
                                             <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                 <div class="products-single fix">
                                                     <div class="box-img-hover">
                                                         <div class="type-lb">
                                                             <p class="sale">Sale</p>
                                                         </div>
-                                                        <img src="'.ASSETS.'/' .$item['product_images']. '" class="img-fluid" alt="Image">
+                                                        <img src="'.ASSETS.'/' .$item['product_images'].'" class="img-fluid" alt="Image">
                                                         <div class="mask-icon">
                                                             <ul>
                                                                 <li><a href="'.ROOT.'productdetail/?product_id='.$item['product_id'].'" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
@@ -76,6 +78,7 @@
                                                     </div>
                                                 </div>
                                             </div>';
+
                                         }?>
                                         <!-- For Each Ende -->
 
