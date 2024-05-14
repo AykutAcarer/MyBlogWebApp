@@ -1,4 +1,6 @@
-<?= $this->view("template_freshshop/header",$data); ?>
+<?= $this->view("template_freshshop/header", $data, $products); ?>
+<?php show($products)?>
+<?php show($_SESSION['cart_list'])?>
 
 
     <!-- Start All Title Box -->
@@ -36,30 +38,32 @@
                             </thead>
                             <tbody>
                                 <?php
-                                    foreach($_SESSION['cart'] as $cart_items)
+                                    foreach($products as $item)
                                     {
+                                        //get just first image of each products in order to show product list
+                                        $firstImageUrl = isset($item['images'][0]['images_url']) ? $item['images'][0]['images_url'] : null;
                                         echo'
                                             <tr>
                                                 <td class="thumbnail-img">
                                                     <a href="#">
-                                                <img class="img-fluid" src="'.ASSETS.'/'.$cart_items['product_image'].'" alt="" />
+                                                <img class="img-fluid" src="'.ASSETS.'/'.$firstImageUrl.'" alt="" />
                                             </a>
                                                 </td>
                                                 <td class="name-pr">
                                                     <a href="#">
-                                                '.$cart_items['product_name'].'
+                                                '.$item['product_name'].'
                                             </a>
                                                 </td>
                                                 <td class="price-pr">
-                                                    <p>$ '.$cart_items['product_preis'].'</p>
+                                                    <p>$ '.$item['product_preis_now'].'</p>
                                                 </td>
                                                 <td class="quantity-box">
-                                                    <input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text" onchange="calculateTotal(this,'.$cart_items['product_preis'].')"></td>
+                                                    <input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text" onchange="updateTotal(this,'.$item['product_preis_now'].','.$item['product_id'].')"></td>
                                                 <td class="total-pr">
-                                                    <p>$ 80</p>
+                                                    <p id="totalPrice-'.$item['product_id'].'">$ 0</p>
                                                 </td>
                                                 <td class="remove-pr">
-                                                    <a href="#" onclick="removeProduct(this)">
+                                                    <a href="'.ROOT.'cartdelete/?product_id='.$item['product_id'].'">
                                                 <i class="fas fa-times"></i>
                                             </a>
                                                 </td>
@@ -98,9 +102,9 @@
                     <h3>Order summary</h3>
                         <div class="d-flex">
                             <h4>Sub Total</h4>
-                            <div id="subTotal" class="ml-auto font-weight-bold"> $ 130 </div>
+                            <div id="subTotal" class="ml-auto font-weight-bold"> $ 0 </div>
                         </div>
-                        <div class="d-flex">
+                        <!-- <div class="d-flex">
                             <h4>Total</h4>
                             <div id="totalPrice" class="ml-auto font-weight-bold"> $ 130 </div>
                         </div>
@@ -108,16 +112,16 @@
                         <div class="d-flex">
                             <h4>Discount</h4>
                             <div class="ml-auto font-weight-bold"> $ 40 </div>
-                        </div>
+                        </div> -->
                         <hr class="my-1">
                         <div class="d-flex">
                             <h4>Coupon Discount</h4>
-                            <div class="ml-auto font-weight-bold"> $ 10 </div>
+                            <div class="ml-auto font-weight-bold"> $0 </div>
                         </div>
-                        <div class="d-flex">
+                        <!-- <div class="d-flex">
                             <h4>Tax</h4>
                             <div class="ml-auto font-weight-bold"> $ 2 </div>
-                        </div>
+                        </div> -->
                         <div class="d-flex">
                             <h4>Shipping Cost</h4>
                             <div class="ml-auto font-weight-bold"> Free </div>

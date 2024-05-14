@@ -156,11 +156,9 @@
                 <div class="attr-nav">
                     <ul>
                         <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        <li class="side-menu">
-							<a href="#" style="color: #ed6f21">
-								<i class="fa fa-shopping-bag"></i>
-								<span class="badge">3</span>
-								<p>My Cart</p>
+                        <li class="nav-item">
+							<a href="<?=ROOT?>cart/?product_id=newCart" style="color: #ed6f21">
+								<p><i class="fa fa-shopping-bag"></i> My Cart</p>
 							</a>
 						</li>
                     </ul>
@@ -168,32 +166,37 @@
                 <!-- End Atribute Navigation -->
             </div>
             <!-- Start Side Menu -->
-            <div class="side">
+            <!-- <div class="side">
                 <a href="#" class="close-side"><i class="fa fa-times"></i></a>
                 <li class="cart-box">
                     <ul class="cart-list">
-                        <li>
-                            <a href="#" class="photo"><img src="<?=ASSETS?>template_freshshop/images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Delica omtantur </a></h6>
-                            <p>1x - <span class="price">$80.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="<?=ASSETS?>template_freshshop/images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Omnes ocurreret</a></h6>
-                            <p>1x - <span class="price">$60.00</span></p>
-                        </li>
-                        <li>
-                            <a href="#" class="photo"><img src="<?=ASSETS?>template_freshshop/images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                            <h6><a href="#">Agam facilisis</a></h6>
-                            <p>1x - <span class="price">$40.00</span></p>
-                        </li>
+
+                    <?php
+                
+                        foreach($products as $item)
+                        {
+                            if(isset($_SESSION['cart_list'][$item['product_id']])){
+                            //get just first image of each products in order to show product list
+                            $firstImageUrl = isset($item['images'][0]['images_url']) ? $item['images'][0]['images_url'] : null;
+                            echo'
+                            <li>
+                                <a href="#" class="photo"><img src="'.ASSETS.'/'.$firstImageUrl.'" class="cart-thumb" alt="" /></a>
+                                <h6><a href="#">'.$item['product_name'].' </a></h6>
+                                <p>1x - <span class="price">$'.$item['product_preis_now'].'</span></p>
+                            </li>
+                            ';
+                            }
+                        }
+                    
+                    ?>
                         <li class="total">
                             <a href="<?=ROOT?>cart/?product_id=newCart" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                            <span class="float-right"><strong>Total</strong>: $180.00</span>
                         </li>
+
+
                     </ul>
                 </li>
-            </div>
+            </div> -->
             <!-- End Side Menu -->
         </nav>
         <!-- End Navigation -->

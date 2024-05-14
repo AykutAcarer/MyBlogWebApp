@@ -96,7 +96,7 @@
                                 <div class="price-box-bar">
                                     <div class="cart-and-bay-btn">
                                         <!-- <a class="btn hvr-hover" data-fancybox-close="" href="#">Buy New</a> -->
-                                        <a class="btn hvr-hover" data-fancybox-close="" href="#">Add to cart</a>
+                                        <a class="btn hvr-hover" data-fancybox-close="" href="'.ROOT.'cart/?product_id='.$item['product_id'].'">Add to cart</a>
                                     </div>
                                 </div>
 

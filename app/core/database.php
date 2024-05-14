@@ -49,7 +49,7 @@ Class Database
 		}
 	}
 
-	public function write($query,$data = [])
+	public function write($query,$data=[])
 	{
 
 		$DB = $this->db_connect();
@@ -74,6 +74,16 @@ Class Database
 		{
 			return false;
 		}
+	}
+
+	public function delete($query){
+
+		$DB = $this->db_connect();
+
+	
+		$stm = $DB->prepare($query);
+		$stm ->execute();
+
 	}
 
 

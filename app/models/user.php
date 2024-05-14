@@ -44,8 +44,10 @@ Class User
         unset($_SESSION['user_id']); 
         unset($_SESSION['email']); 
         unset($_SESSION['user_url']); 
+        unset($_SESSION['cart_list']);
+        
 
-        unset($_SESSION['cart']);
+       
         
         header("Location:". ROOT ."index");
         die;

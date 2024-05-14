@@ -196,47 +196,32 @@
     <script src="<?=ASSETS?>template_freshshop/js/form-validator.min.js"></script>
     <script src="<?=ASSETS?>template_freshshop/js/contact-form-script.js"></script>
     <script src="<?=ASSETS?>template_freshshop/js/custom.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
-        function calculateTotal(input, pricePerUnit) {
-            var quantity = input.value;
-            var totalPrice = quantity * pricePerUnit;
-            var totalPriceElement = input.parentElement.nextElementSibling.querySelector('.total-pr p');
-            totalPriceElement.textContent = '$ ' + totalPrice.toFixed(2);
+    function updateTotal(input, pricePerItem, product_id) {
+        // Get the price per item
+        var pricePerItem = pricePerItem;
+        // Get the quantity entered by the user
+        var quantity = input.value;
+        // Calculate the total price by multiplying price per item with quantity
+        var totalPrice = pricePerItem * quantity;
+        // Update the total price displayed in the HTML
+        document.getElementById("totalPrice-"+product_id).textContent = "$ " + totalPrice.toFixed(2);
 
-            // Recalculate the total after updating the individual product total
-            updateTotal(pricePerUnit);
-        }
-
-        function updateTotal(pricePerUnit) {
-            var quantityInputs = document.querySelectorAll('.c-input-text.qty.text');
-            var totalPrices = document.querySelectorAll('.total-pr p');
-
-            var subTotal = 0;
-
-            for (var i = 0; i < quantityInputs.length; i++) {
-                var quantity = parseInt(quantityInputs[i].value);
-                
-                var productTotal = quantity * pricePerUnit;
-                totalPrices[i].textContent = '$ ' + productTotal.toFixed(2);
-                subTotal = subTotal + productTotal;
-            }
-
-            document.getElementById('subTotal').textContent = '$ ' + subTotal.toFixed(2);
-            document.getElementById('totalPrice').textContent = '$ ' + subTotal.toFixed(2);
-        }
-
-        // Calculate the total initially
-        updateTotal();
-    </script>
-    <script>
-        function removeProduct(anchor) {
-            // Get the row to be removed
-            var row = anchor.parentElement.parentElement;
-            
-            // Remove the row from the table
-            row.remove();
-        }
-    </script>
+        // Calculate subtotal
+        var subtotal = 0;
+        $(".total-pr p").each(function() {
+            subtotal += parseFloat($(this).text().replace("$ ", ""));
+        });
+        $("#subTotal").text("$ " + subtotal.toFixed(2));
+        
+        // Calculate grand total (considering discount, tax, shipping, etc.)
+        var grandTotal = subtotal;
+        // You can add any additional calculations for discounts, taxes, shipping, etc. here
+        $(".gr-total .h5").text("$ " + grandTotal.toFixed(2));
+    }
+</script>
 
 </body>
 

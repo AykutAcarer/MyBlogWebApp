@@ -75,7 +75,7 @@
                                                                 <li><a href="'.ROOT.'productdetail/?product_id='.$item['product_id'].'" data-toggle="tooltip" data-placement="right" title="View"><i class="fas fa-eye"></i></a></li>
                                                                 <li><a href="#" data-toggle="tooltip" data-placement="right" title="Add to Wishlist"><i class="far fa-heart"></i></a></li>
                                                             </ul>
-                                                            <a class="cart" href="'.ROOT.'cart/?product_id='.$item['product_id'].'&product_name='.$item['product_name'].'&product_preis='.$item['product_preis_now'].'&product_images='.$firstImageUrl.'">Add to Cart</a>
+                                                            <a class="cart" href="'.ROOT.'cart/?product_id='.$item['product_id'].'">Add to Cart</a>
                                                         </div>
                                                     </div>
                                                     <div class="why-text">
@@ -120,7 +120,7 @@
                                                             <h4>'.$item['product_name'].'</h4>
                                                             <h5> <del>$'.$item['product_preis_from'].'</del> $'.$item['product_preis_now'].'</h5>
                                                             <p>$'.$item['product_description'].'</p>
-                                                            <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                            <a class="btn hvr-hover" href="'.ROOT.'cart/?product_id='.$item['product_id'].'">Add to Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
