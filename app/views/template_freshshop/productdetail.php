@@ -150,8 +150,19 @@
                                     }
                                 }
                             ?>
-                        
-                        <a href="#" class="btn hvr-hover">Leave a Review</a> 
+                        <hr>
+                        <form class="mt-3 review-form-box" id="formReview" method="post">
+                            <div class="form-row ">
+                                <div class="form-group col-lg-12 col-md-6 ">
+                                    <label for="fullname">Full Name</label>
+                                    <input type="text"  name="fullname" class="form-control mb-3 w-100" placeholder="Type your name">
+                                    <label for="review">Review</label>
+                                    <input type="text" name="review" id="review" class="form-control mb-3 w-100" placeholder="Type your reviews about product">
+                                    <input type="hidden" name="product_id" value="<?=$_GET['product_id']?>">
+                                    <button class="btn hvr-hover">Leave a Review</button>
+                                </div>
+                            </div>
+                        </form> 
                     </div>
                 </div>
 			</div>

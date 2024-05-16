@@ -10,7 +10,7 @@ Class Product
                     LEFT JOIN 
                     dt_images i ON p.product_id = i.product_id_fk
                     LEFT JOIN 
-                    dt_reviews r ON p.product_id = r.product_id_ifk
+                    dt_reviews r ON p.product_id = r.product_id_fk
                     ";
                                                    
         
@@ -71,7 +71,8 @@ Class Product
         if((isset($_SESSION['user_id']) && isset($_SESSION['user_url'])))
         {  
            if(!isset($_SESSION['cart_list'][$product_id])){
-                if($product_id !== '') {
+                if($product_id !== '') 
+                {
                 
                     $arr['product_id_fk'] = $product_id;
                     $arr['user_id_fk'] = $_SESSION['user_id'];
@@ -174,6 +175,34 @@ Class Product
         die;
     }
     
+    function addReview($product_id, $POST){
+
+        $DB = new Database();
+        $_SESSION['error'];
+        if(isset($POST['fullname']) && isset($POST['review']))
+        {
+        
+            $arr['review_posted_by'] = $POST['fullname'];
+            $arr['reviews_text'] = $POST['review'];
+            $arr['product_id_fk'] = $product_id;
+            $arr['create_at'] = date("Y-m-d H:i:s");
+            $arr['update_at'] = date("Y-m-d H:i:s");
+            
+            $query = "insert into dt_reviews (product_id_fk, reviews_text,review_posted_by,create_at,update_at) values (:product_id_fk,:reviews_text,:review_posted_by,:create_at,:update_at)";
+            
+            show($query);
+            $data = $DB -> write($query,$arr);
+           
+
+            if($data)
+            {
+                //After adding cart goes to product page
+                header("Location:". ROOT ."productdetail/?product_id=$product_id");  
+                die;   
+            }   
+            
+        }
+    }
 }    
     
 ?>
