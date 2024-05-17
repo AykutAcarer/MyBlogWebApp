@@ -11,7 +11,7 @@ Class App
 
 		$url = $this->splitURL();
 
- 		if(file_exists("/app/controllers/". strtolower($url[0]) .".php"))
+ 		if(file_exists("../app/controllers/". strtolower($url[0]) .".php"))
  		{
  			$this->controller = strtolower($url[0]);
  			unset($url[0]);
