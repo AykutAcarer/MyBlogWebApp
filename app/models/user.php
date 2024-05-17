@@ -105,6 +105,20 @@ Class User
         return false;
 
     }
+
+    function getMail($POST)
+    {
+            
+            $to = "professional.vision@protonmail.com";
+            $from = $POST['email'];
+            $subject = $POST['subject'];
+            $firstname = $POST['firstname'];
+            $lastname = $POST['lastname'];
+            $text = $POST['message'];
+
+            mail($to,$subject,$text, "From: $from");
+
+    }
 }    
     
 ?>

@@ -57,7 +57,7 @@
                                     </div>
                                     <div class="submit-button text-center">
                                         <button class="btn hvr-hover" id="submit" type="submit">Send Message</button>
-                                        <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                        <!-- <div id="msgSubmit" name="msgSubmit" class="h3 text-center hidden"></div> -->
                                         <div class="clearfix"></div>
                                     </div>
                                 </div>
