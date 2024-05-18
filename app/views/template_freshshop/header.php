@@ -20,13 +20,13 @@
     <link rel="apple-touch-icon" href="<?=ASSETS?>/template_freshshop/images/apple-touch-icon.png">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="<?=ASSETS?>/template_freshshop/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/template_freshshop/css/bootstrap.min.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="<?=ASSETS?>/template_freshshop/css/style.css">
+    <link rel="stylesheet" href="/template_freshshop/css/style.css">
     <!-- Responsive CSS -->
-    <link rel="stylesheet" href="<?=ASSETS?>/template_freshshop/css/responsive.css">
+    <link rel="stylesheet" href="/template_freshshop/css/responsive.css">
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="<?=ASSETS?>/template_freshshop/css/custom.css">
+    <link rel="stylesheet" href="/template_freshshop/css/custom.css">
 
     <!-- [if lt IE 9]> 
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
