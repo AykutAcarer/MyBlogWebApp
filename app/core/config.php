@@ -26,7 +26,7 @@ define('ASSETS', str_replace("app/core", "public/assets", $path));
 /*set to true to allow error reporting
 set to false when you upload online to stop error reporting*/
 
-define('DEBUG',true);
+define('DEBUG',false);
 
 if(DEBUG)
 {
