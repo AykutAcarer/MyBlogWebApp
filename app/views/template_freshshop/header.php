@@ -22,7 +22,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="<?=ASSETS?>/template_freshshop/css/bootstrap.min.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="../public/assests/template_freshshop/css/style.css">
+    <link rel="stylesheet" href="<?=ASSETS?>/template_freshshop/css/style.css">
     <!-- Responsive CSS -->
     <link rel="stylesheet" href="<?=ASSETS?>/template_freshshop/css/responsive.css">
     <!-- Custom CSS -->
