@@ -21,7 +21,7 @@ $path = str_replace("\\", "/",PROTOCAL ."://" . $_SERVER['SERVER_NAME'] . __DIR_
 $path = str_replace($_SERVER['DOCUMENT_ROOT'], "", $path);
 
 define('ROOT', str_replace("app/core", "public", $path));
-define('ASSETS', str_replace("app/core", "public/assets", $path));
+define('ASSETS', str_replace("app/core", "/assets", $path));
 
 /*set to true to allow error reporting
 set to false when you upload online to stop error reporting*/
