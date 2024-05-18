@@ -20,8 +20,8 @@ define('PROTOCAL','https');
 $path = str_replace("\\", "/",PROTOCAL ."://" . $_SERVER['SERVER_NAME'] . __DIR__  . "/");
 $path = str_replace($_SERVER['DOCUMENT_ROOT'], "", $path);
 
-define('ROOT', str_replace("app/core", "public", $path));
-define('ASSETS', str_replace("app/core", "public/assets", $path));
+define('ROOT', str_replace("app/core", "", $path));
+define('ASSETS', str_replace("app/core", "", $path));
 
 /*set to true to allow error reporting
 set to false when you upload online to stop error reporting*/
